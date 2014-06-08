@@ -10,7 +10,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
-
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.widget.EditText;
 
 import org.json.JSONException;
@@ -57,6 +58,19 @@ public class PasswordRetrievalActivity extends Activity {
     
     //Submit button
     Button passwordRetrieveSubmitBtn;
+    
+    //set background and button font
+    Typeface btn_font = Typeface.createFromAsset(getAssets(), "KaushanScript-Regular.ttf");
+   	passwordRetrieveSubmitBtn.setTypeface(btn_font);
+   	
+   	Drawable round_btn = getResources().getDrawable(R.drawable.round_btn);
+   	
+   	 int sdk = android.os.Build.VERSION.SDK_INT;
+     if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+        	passwordRetrieveSubmitBtn.setBackgroundDrawable(round_btn); 
+    } else {
+        	passwordRetrieveSubmitBtn.setBackground(round_btn); 
+    }
     
     //Edit text
     EditText usernameTextBox;
