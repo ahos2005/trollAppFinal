@@ -10,7 +10,10 @@ import org.apache.http.NameValuePair;
 import java.util.HashMap;
 import org.apache.http.message.BasicNameValuePair;
 
-
+/* 
+ * Handles API Calls
+ */
+ 
 public class APILoginHandler {
 
     static String response = null;
@@ -19,14 +22,14 @@ public class APILoginHandler {
 
     APIServiceHandler sh = new APIServiceHandler();
 
-
+    //Logs the user in
     public String makeLoginCall(String url, int method,
                                 List<NameValuePair> params){
 
         return sh.makeServiceCall(url, method, params);
 
     }
-
+    //Checks if the user is logged in
     public String checkLoginCall(String url, int method,
                                 List<NameValuePair> params){
 
