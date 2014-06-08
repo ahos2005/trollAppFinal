@@ -58,20 +58,7 @@ public class PasswordRetrievalActivity extends Activity {
     
     //Submit button
     Button passwordRetrieveSubmitBtn;
-    
-    //set background and button font
-    Typeface btn_font = Typeface.createFromAsset(getAssets(), "KaushanScript-Regular.ttf");
-   	passwordRetrieveSubmitBtn.setTypeface(btn_font);
-   	
-   	Drawable round_btn = getResources().getDrawable(R.drawable.round_btn);
-   	
-   	 int sdk = android.os.Build.VERSION.SDK_INT;
-     if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-        	passwordRetrieveSubmitBtn.setBackgroundDrawable(round_btn); 
-    } else {
-        	passwordRetrieveSubmitBtn.setBackground(round_btn); 
-    }
-    
+
     //Edit text
     EditText usernameTextBox;
 
