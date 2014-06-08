@@ -1,34 +1,28 @@
 package edu.ucsd.troll.app;
 
-import android.annotation.SuppressLint;
-import android.app.ListActivity;
+
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
-import android.support.v7.app.ActionBarActivity;
+
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListAdapter;
-import android.widget.SimpleAdapter;
-import android.view.View;
-import android.widget.Button;
+
 import android.widget.EditText;
-import android.widget.Toast;
-import org.json.JSONArray;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.List;
 import java.util.ArrayList;
+
 import org.apache.http.NameValuePair;
+
 import java.util.HashMap;
+
 import org.apache.http.message.BasicNameValuePair;
 
 
@@ -36,48 +30,22 @@ import org.apache.http.message.BasicNameValuePair;
 
 
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.List;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.utils.URLEncodedUtils;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
-
 public class PasswordRetrievalActivity extends Activity {
 
     //init the progress bar
     private ProgressDialog pDialog;
 
     private static String recoverUrl = "http://troll.everythingcoed.com/user/recover";
-    private static String checkLoginUrl = "http://troll.everythingcoed.com/user/login/check";
 
     private static final String TAG_APIKEYVALUE = "OlDwjUX0fQSm0vAy2D3fy4uCZ108bx5N";
     private static final String TAG_APIKEYNAME= "api_key";
-    private static final String TAG_USER = "user";
-    private static final String TAG_ID = "id";
     private static final String TAG_USERNAME = "username";
     private static final String TAG_RESPONSE = "response";
     private static final String TAG_RESULT = "result";
     private static final String TAG_RESETCODE = "reset_code";
-    private static final String TAG_EMAIL = "email";
+    //private static final String TAG_EMAIL = "email";
 
 
-
-    // menu JSONArray
-    JSONArray menu = null;
-
-    //api response string
-    String responseString = null;
-
-    //login manager
-    LoginManager login;
 
     // Hashmap for ListView
     ArrayList<HashMap<String, String>> userList;
@@ -86,9 +54,6 @@ public class PasswordRetrievalActivity extends Activity {
 
     // Alert Dialog Manager
     AlertDialogManager alert = new AlertDialogManager();
-
-    // Session Manager Class
-    SessionManager session;
     
     //Submit button
     Button passwordRetrieveSubmitBtn;
@@ -98,35 +63,17 @@ public class PasswordRetrievalActivity extends Activity {
 
     
     
-    @SuppressLint("NewApi")
-	@Override
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.password_retrieval);
-
-        //userList = new ArrayList<HashMap<String, String>>();
-
-        // Session Manager
-        login = new LoginManager(getApplicationContext());
 
         // Username, Password input text
         usernameTextBox = (EditText) findViewById(R.id.edit_passretrieve_username);
 
         // submit username button
         passwordRetrieveSubmitBtn = (Button) findViewById(R.id.passwordRetrieveBtn);
-        
-   		Typeface btn_font = Typeface.createFromAsset(getAssets(), "KaushanScript-Regular.ttf");
-   		passwordRetrieveSubmitBtn.setTypeface(btn_font);
-   		Drawable round_btn = getResources().getDrawable(R.drawable.round_btn);
-   		
-   		int sdk = android.os.Build.VERSION.SDK_INT;
-        if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-        	passwordRetrieveSubmitBtn.setBackgroundDrawable(round_btn); 
-        } else {
-        	passwordRetrieveSubmitBtn.setBackground(round_btn); 
-        }
 
-        
         // Submit username button activity
         passwordRetrieveSubmitBtn.setOnClickListener(new View.OnClickListener() {
 
@@ -137,7 +84,7 @@ public class PasswordRetrievalActivity extends Activity {
 
                 // Check if username textbox is filled
                 if(username.trim().length() > 0){
-
+                    
                     params.add(new BasicNameValuePair(TAG_USERNAME, username));
                     params.add(new BasicNameValuePair(TAG_APIKEYNAME, TAG_APIKEYVALUE));
 
@@ -174,43 +121,42 @@ public class PasswordRetrievalActivity extends Activity {
 
         @Override
         protected String doInBackground(Void... arg0) {
-            // Creating service handler class instance
+            // Creating API service handler class instance
             APIServiceHandler sh = new APIServiceHandler();
 
             // Making a request to url and getting response
             String jsonStr = sh.makeServiceCall(recoverUrl, APIServiceHandler.POST, params);
-
             Log.d("Response: ", "> " + jsonStr);
 
             if (jsonStr != null) {
-            	//Look for a response which means failure
+                
             	try{
+            		//Check if the code returned a failure
             		JSONObject jsonObj = new JSONObject(jsonStr);
-
             		Log.d("Response: ", "=> " + jsonObj);
+            		
             		//the overall return object
             		String responseReturn = jsonObj.getString(TAG_RESPONSE);
             		Log.d("Response: ", "=> " + responseReturn);
 
-
-            		//get the result JSON response result	
+            		//get the result JSON response and check if the call failed or succeeded
             		JSONObject resultObj = new JSONObject(responseReturn);
-
-            		//get the value (success or fail)
             		String responseResult = resultObj.getString(TAG_RESULT);
             		Log.d("Response: ", "=> " + responseResult);
 
-            		//return just fail otherwise continue
+            		//If the data submitted to the api is a failure, return the failure
             		if(responseResult.equals("fail")){
                       return responseResult;
                   	}
-            	//If no response section was found, It was a success and it's code.
+            		
+            	//If no response section was found, It was a success the response is the code.
             	} catch (JSONException e) {
                     String resetCode = jsonStr.replace("\"", "");
                     Log.d("reset code: ", "=> " + resetCode);
                                                 
                     user.put(TAG_RESETCODE, resetCode);
                     
+                    //Store the reset code into a hashmap and return success
                     return "success";
             	}
             } else {
@@ -229,33 +175,24 @@ public class PasswordRetrievalActivity extends Activity {
 
             Log.d("RESULT: ", "=> " + result);
 
+            //If the reset code is successfully found and stored
             if(result.equals("success")){
 
                 // Starting ChangePasswordActivity
                 Intent i = new Intent(getApplicationContext(), ChangePasswordActivity.class);
                 i.putExtra(TAG_RESETCODE, (String)user.get(TAG_RESETCODE));
                 i.putExtra(TAG_USERNAME, (String)user.get(TAG_USERNAME));
+                
                 startActivity(i);
                 finish();
 
             }else{
-                // username / password doesn't match
+                //Ther username doesn't exist
                 alert.showAlertDialog(PasswordRetrievalActivity.this, "Password retrieval failed..",
                 		"Username is invalid", false);
             }
-            /**
-             * Updating parsed JSON data into ListView
-             * */
-//            ListAdapter adapter = new SimpleAdapter(
-//                    ProfileActivity.this, menuList,
-//                    R.layout.list_item, new String[] {TAG_TITLE, TAG_DESCRIPTION,
-//                    TAG_SIZE}, new int[] { R.id.title,
-//                    R.id.rating, R.id.category });
-//
-//            setListAdapter(adapter);
         }
-
     }
-
-
 }
+
+
