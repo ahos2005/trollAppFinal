@@ -201,16 +201,16 @@ public class FavoritesActivity extends ListActivity  {
             return null;
         }
 
-//        @Override
-//        protected void onPostExecute(Void result) {
-//            super.onPostExecute(result);
-//            /**
-//* Updating parsed JSON data into ListView
-//* */
-// ListAdapter adapter = new SimpleAdapter(
-//		 FavoritesActivity.this, favoriteList,
-//		 R.layout.favorites_list, new String[] {TAG_TITLE}, new int[] { R.id.item_title});
-// 		setListAdapter(adapter);
-//        }
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+            /**
+* Updating parsed JSON data into ListView
+* */
+ ListAdapter adapter = new SimpleAdapter(
+		 FavoritesActivity.this, favoriteList,
+		 R.layout.favorites_list, new String[] {TAG_TITLE}, new int[] { R.id.item_title});
+ 		setListAdapter(adapter);
+        }
     }
 }

@@ -53,7 +53,7 @@ public class MenuActivity extends ListActivity {
     private static final String TAG_HOURS = "hours";
     private static final String TAG_OPEN = "open";
     private static final String TAG_CLOSED = "closed";
-    private static final String TAG_USERTOKEN = "presist_code";
+    private static final String TAG_USERTOKEN = "persist_code";
     private static final String TAG_MENUID = "menus_id";
 
     private static final String TAG_SORT = "sort_by";

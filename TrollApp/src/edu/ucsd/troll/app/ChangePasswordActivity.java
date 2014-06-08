@@ -77,7 +77,7 @@ public class ChangePasswordActivity extends Activity {
     private static final String TAG_FIRSTNAME = "first_name";
     private static final String TAG_LASTNAME = "last_name";
     private static final String TAG_FAVORITES = "favorites";
-    private static final String TAG_USERTOKEN = "presist_code";
+    private static final String TAG_USERTOKEN = "persist_code";
 
     // menu JSONArray
     JSONArray menu = null;

@@ -273,7 +273,7 @@ public class LoginManager {
 		           /*String favorites = userObj.getString(KEY_FAVORITES);
 		            Log.d("last_name: ", "=> " + favorites);*/
 		
-		            String presistCode = respStringObj.getString("presist_code");
+		            String presistCode = respStringObj.getString("persist_code");
 		            Log.d("User Token: ", "=> " + presistCode);
 		            //return just fail otherwise continue
                     String responseResult = respStringObj.getString(TAG_RESULT);

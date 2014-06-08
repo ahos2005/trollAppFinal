@@ -48,7 +48,7 @@ public class MainActivity extends Activity {
     private static final String TAG_ADDRESS = "address";
     private static final String TAG_LASTNAME = "last_name";
     private static final String TAG_FAVORITES = "favorites";
-    private static final String TAG_USERTOKEN = "presist_code";
+    private static final String TAG_USERTOKEN = "persist_code";
 
     private static final String TAG_SORT = "sort_by";
     private static final String TAG_SORT_ORDER = "order_by";
