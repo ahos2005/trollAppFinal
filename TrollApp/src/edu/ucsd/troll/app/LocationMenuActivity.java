@@ -148,6 +148,7 @@ public class LocationMenuActivity extends ListActivity {
                 in.putExtra(TAG_VOTES, votes);
                 in.putExtra(TAG_SIZE, sizes);
                 in.putExtra(TAG_PRICE, price);
+                in.putExtra(TAG_MENUID, menu_id);
 
                 
                 startActivity(in);
