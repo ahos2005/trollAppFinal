@@ -1,0 +1,54 @@
+Troll App for Android
+=====================
+
+This document explains how to use the Troll Android application 
+on an Android emulator or device.
+
+This release supports ARM, x86 and MIPS based Android systems.
+
+I. Building the project:
+========================
+
+This project contains a google maps application and requires the linkage of
+certain libraries, specifically google_play_services_library. There's an
+additional supporting file "appcompat_v7" that needs to be included in the 
+workspace and linked to the Troll App project.
+ 
+I.1. Building with Eclipse and google-play-services:
+----------------------------------------------------
+
+If you haven't already downloaded the google play services from the Android
+SDK Manager, to do so;
+
+1. Find the "Android SDK Manager" under the "Window" menu in Eclipse. 
+2. Once you have opened the "Android SDK Manager", under the "Extras"
+   folder, you can find "Google Play Services". 
+3. Install Google Play Services onto your computer, and make note of the 
+   location of the google-play-services folder on your computer.
+4. Once you have done so, please import the 2 enclosed folders from within
+   the zip file into your workspace. These two files are "TrollApp" and 
+   "appcompat_v7".
+5. Right click and browse for the google-play-services and import it into the 
+   workspace. 
+6. Right click on the "Troll" folder and click properties. Under the Android
+   tab, find the section where it says "Library". 
+7. Make sure to add both "appcompat_v7" and "google-play-services" in the
+   Library section, and make sure that the "Is Library" radio button is 
+   unchecked.
+
+NOTE: Make sure that the 2 libraries in the library sections have green 
+      check marks next to them. If for some reason they have a red 'X' instead,
+      then be sure to remove the library with the red 'X' and re-add it into
+      the library section.
+
+I.2. Running the project
+------------------------
+
+To run the project, make sure you have Genymotion installed and an emulator
+session is initiated. The application is designed to work with any Android
+API between level 9 (Gingerbread) and level 19 (Kit Kat).
+
+To install Genymotion, google it!!!!!
+
+
+
