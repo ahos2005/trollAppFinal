@@ -108,7 +108,7 @@ public class SingleMenuItemActivity extends Activity {
 		Log.d("SIZES", sizeTitles);
 
 		TextView sizes = (TextView) findViewById(R.id.lblPrice);
-		// sizes.setText(Html.fromHtml(setUpPricing(sizeTitles, prices)));
+		sizes.setText(Html.fromHtml(setUpPricing(sizeTitles, prices)));
 
 		// Log.d("The list", setUpPricing(sizeTitles, prices));
 

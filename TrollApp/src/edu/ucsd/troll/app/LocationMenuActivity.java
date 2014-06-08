@@ -128,6 +128,7 @@ public class LocationMenuActivity extends ListActivity {
                         .getText().toString();
                 String description = ((TextView) view.findViewById(R.id.description))
                 		.getText().toString();
+               
                 String votes = ((TextView) view.findViewById(R.id.total_votes))
                         .getText().toString();
                 
@@ -144,7 +145,7 @@ public class LocationMenuActivity extends ListActivity {
                 in.putExtra(TAG_TITLE, title);
                 in.putExtra(TAG_DESCRIPTION, description);
                 in.putExtra(TAG_RATING, rating);
-                in.putExtra(TAG_SIZE, category);
+                in.putExtra(TAG_CATEGORY, category);
                 in.putExtra(TAG_VOTES, votes);
                 in.putExtra(TAG_SIZE, sizes);
                 in.putExtra(TAG_PRICE, price);
@@ -304,9 +305,9 @@ public class LocationMenuActivity extends ListActivity {
              * */
             ListAdapter adapter = new SimpleAdapter(
                     LocationMenuActivity.this, menuList,
-                    R.layout.location_menu_list, new String[] {TAG_ID, TAG_TITLE,TAG_DESCRIPTION, TAG_CATEGORY,
-                    TAG_RATING, TAG_VOTES}, new int[] {R.id.itemId, R.id.title,R.id.description,
-                    R.id.category, R.id.rating, R.id.total_votes});
+                    R.layout.location_menu_list, new String[] {TAG_ID, TAG_TITLE, TAG_DESCRIPTION, TAG_CATEGORY,
+                    TAG_RATING, TAG_VOTES, TAG_SIZE, TAG_PRICE}, new int[] {R.id.itemId, R.id.title,R.id.description,
+                    R.id.category, R.id.rating, R.id.total_votes, R.id.sizes, R.id.price });
             setListAdapter(adapter);
         }
 
