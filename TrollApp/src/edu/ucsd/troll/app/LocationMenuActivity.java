@@ -60,6 +60,7 @@ public class LocationMenuActivity extends ListActivity {
     private static final String TAG_SIZE = "size_titles";
     private static final String TAG_PRICE = "prices";
     private static final String TAG_MENUID = "menus_id";
+    private static final String TAG_LOWESTPRICE = "lowest_price";
 
     
     private static final String TAG_SORT = "sort_by";
@@ -257,6 +258,9 @@ public class LocationMenuActivity extends ListActivity {
                         String rating = c.getString(TAG_RATING);
                         Log.d("RATING: ", "=> " + rating);
                         
+                        String lowest_price = c.getString(TAG_LOWESTPRICE);
+                        Log.d("RATING: ", "=> " + lowest_price);
+                        
                         String votes = c.getString(TAG_VOTES);
                         Log.d("RATING: ", "=> " + votes);
 
@@ -280,6 +284,7 @@ public class LocationMenuActivity extends ListActivity {
                         contact.put(TAG_SIZE, size);
                         contact.put(TAG_PRICE, price);
                         contact.put(TAG_VOTES, votes);
+                        contact.put(TAG_LOWESTPRICE, lowest_price);
 
                         // adding contact to contact list
                         menuList.add(contact);
@@ -306,8 +311,8 @@ public class LocationMenuActivity extends ListActivity {
             ListAdapter adapter = new SimpleAdapter(
                     LocationMenuActivity.this, menuList,
                     R.layout.location_menu_list, new String[] {TAG_ID, TAG_TITLE, TAG_DESCRIPTION, TAG_CATEGORY,
-                    TAG_RATING, TAG_VOTES, TAG_SIZE, TAG_PRICE}, new int[] {R.id.itemId, R.id.title,R.id.description,
-                    R.id.category, R.id.rating, R.id.total_votes, R.id.sizes, R.id.price });
+                    TAG_RATING, TAG_VOTES, TAG_SIZE, TAG_PRICE, TAG_LOWESTPRICE}, new int[] {R.id.itemId, R.id.title,R.id.description,
+                    R.id.category, R.id.rating, R.id.total_votes, R.id.sizes, R.id.price, R.id.lowestPrice });
             setListAdapter(adapter);
         }
 
