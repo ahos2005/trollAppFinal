@@ -58,6 +58,7 @@ import org.apache.http.util.EntityUtils;
 import edu.ucsd.troll.app.R;
 
 /**
+* Displays the list of favorites of the user by name of the favorited items. 
 * Created on 5/30/2014.
 */
 public class FavoritesActivity extends ListActivity  {
@@ -96,36 +97,12 @@ public class FavoritesActivity extends ListActivity  {
     	login = new LoginManager(getApplicationContext());
         setContentView(R.layout.favorites_layout);
         favoriteList = new ArrayList<HashMap<String, String>>();
-        new GetFavorites().execute();
-       
-//        final Button backButton = (Button) findViewById(R.id.backProfBtn);
-    
-        //Set Button Font
-//        Typeface btn_font = Typeface.createFromAsset(getAssets(), "KaushanScript-Regular.ttf");
-//        backButton.setTypeface(btn_font);
-        
-        // Set Button Shape
-//        Drawable round_btn = getResources().getDrawable(R.drawable.round_btn);
-//        backButton.setBackgroundDrawable(round_btn);
-        
-//        backButton.setOnClickListener(new View.OnClickListener(){
-//          @Override
-//      
-//           public void onClick(View view){
-//             Intent i = new Intent(getApplicationContext(), ProfileActivity.class);
-//             startActivity(i);
-//             finish();
-//           }
-//      
-//        });
-//        
-        //possibly use    super.onBackPressed();
-        
+        new GetFavorites().execute();     
     }
     
-        /**
-* Async task class to get json by making HTTP call
-* */
+    /**
+     * Async task class to get json by making HTTP call
+     * */
     private class GetFavorites extends AsyncTask<Void, Void, Void> {
 
 
@@ -140,17 +117,10 @@ public class FavoritesActivity extends ListActivity  {
 
             String favorites = login.getUserFavorites();
 
-//            String favorites = favoritesMap.get(SessionManager.KEY_FAVORITES);
-
-
             Log.d("Response: ", "> " + favorites);
 
             if (favorites != null) {
                 try {
-                    //JSONObject jsonObj = new JSONObject(favorites);
- 
-                	
-//                    Log.d("Response: ", "=> " + jsonObj);
 
                     // Getting JSON Array node
                     menu = new JSONArray(favorites);
@@ -163,31 +133,12 @@ public class FavoritesActivity extends ListActivity  {
                         Log.d("ID: ", "=> " + id);
                         String title = c.getString(TAG_TITLE);
                         Log.d("TITLE: ", "=> " + title);
-                        //String email = c.getString(TAG_DESCRIPTION);
-                        //Log.d("DESCRIPTION: ", "=> " + email);
-                        //String category = c.getString(TAG_CATEGORY);
-                       // Log.d("CATEGORY: ", "=> " + category);
-                        //String rating = c.getString(TAG_RATING);
-                       // Log.d("RATING: ", "=> " + rating);
-
-                        // Phone node is JSON Object
-                        //JSONArray sizes = c.getJSONArray(TAG_SIZES);
-                        // Log.d("SIZES: ", "=> " + sizes);
-                        //String size = sizes.getString(TAG_SIZE);
-                        // Log.d("SIZE: ", "=> " + size);
-                        //String price = sizes.getString(TAG_PRICE);
-                        //Log.d("PRICE: ", "=> " + price);
-                        //String office = phone.getString(TAG_PHONE_OFFICE);
 
                         // tmp hashmap for single contact
                         HashMap<String, String> singleFavorite = new HashMap<String, String>();
 
                         // adding each child node to HashMap key => value
-                        //singleFavorite.put(TAG_ID, id);
                         singleFavorite.put(TAG_TITLE, title);
-                       // singleFavorite.put(TAG_DESCRIPTION, category);
-                       // singleFavorite.put(TAG_SIZE, rating);
-
                         // adding contact to contact list
                         favoriteList.add(singleFavorite);
                     }

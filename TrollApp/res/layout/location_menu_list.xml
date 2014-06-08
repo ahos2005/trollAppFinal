@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--Filename: location_menu_list.xml
+	Description: contains the list for menu items from SingleMenuActivity.java
+	Author: Kevin Chang & Joel Abitan
+-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"

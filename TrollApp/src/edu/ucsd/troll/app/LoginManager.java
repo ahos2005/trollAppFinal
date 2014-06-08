@@ -21,6 +21,7 @@ import org.json.JSONObject;
 
 
 /**
+ * Facilitate login between screens
  * Created by shalomabitan on 5/22/14.
  */
 public class LoginManager {

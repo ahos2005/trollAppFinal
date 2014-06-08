@@ -186,7 +186,13 @@ public class LocationMenuActivity extends ListActivity {
     }
     
     
-    
+    /**
+     * Create a string to decide which menu to display
+     * @param sort
+     * @param order
+     * @param menu
+     * @return
+     */
 
     public String getFinalUrl(String sort, String order, String menu) {
         

@@ -79,7 +79,8 @@ public class MenuActivity extends ListActivity {
         setContentView(R.layout.menu_layout);
   
       
-        
+      
+       //set up the initial values for the menu
        locationsStorage = new LocationAPIManager(getApplicationContext());
         
        locationAPIResult = locationsStorage.getLocations();
@@ -124,6 +125,7 @@ public class MenuActivity extends ListActivity {
             }
         });
         
+        //the list view in the locations screen used in order to display hours to the user
         ListAdapter adapter = new SimpleAdapter(
                 MenuActivity.this, fillHours,
                 R.layout.menu_list, new String[] { TAG_TITLE, TAG_MENUID,
@@ -158,13 +160,14 @@ public class MenuActivity extends ListActivity {
             
             Log.d("individual location: ", "=> " + locations);
 
-            // looping through All Contacts
+            // looping through all locations
             for (int i = 0; i < locations.length(); i++) {
                 
             	JSONObject c = locations.getJSONObject(i);
                 
                 Log.d("individual location: ", "=> " + c);
                  
+                //putting the locations in the correct place to prepare for placement in the hashmap
                 String id = c.getString(TAG_LOCATIONSID);
                 Log.d("id: ", "=> " + id);
                 String lat = c.getString(TAG_LAT);
@@ -182,6 +185,7 @@ public class MenuActivity extends ListActivity {
                 
                 setUpHours(hrs);
 
+                //set up the hashMaps to put into a list
                 HashMap<String, String> hours = new HashMap<String, String>();
             	hours.put(TAG_TITLE, title);
             	hours.put(TAG_MENUID, menuID);
@@ -223,12 +227,18 @@ public class MenuActivity extends ListActivity {
         }
     	
     }
+    /**
+     * This function sets up the days and hours that the location is open
+     * @param hours
+     */
     
 	private void setUpHours(String hours) {
     	
     	Log.d("Hours", hours);
     	
     	try {
+    		
+    		//getting the nested JSONObjects until the objects are split into open hours and closed hours
             JSONObject preObj = new JSONObject(hours);
             JSONObject jsonObj = preObj.getJSONObject("hours");
             Log.d("JSONOBJ", jsonObj.toString());
@@ -237,6 +247,7 @@ public class MenuActivity extends ListActivity {
             JSONObject clObj = jsonObj.getJSONObject("close");
             Log.d("result", clObj.toString());
             
+            //creating keys for each day of the week
             String sunO = opObj.getString("Sunday");
             Log.d("Sunday: ", "=> " + sunO);
             String monO = opObj.getString("Monday");
@@ -252,7 +263,7 @@ public class MenuActivity extends ListActivity {
             String satO = opObj.getString("Saturday");
             Log.d("Saturday: ", "=> " + satO);
 
-            // tmp hashmap for single contact
+            // tmp hashmap for open hours
             HashMap<String, String> openHash = new HashMap<String, String>();
             
             openHash.put("Sunday", sunO);
@@ -263,6 +274,7 @@ public class MenuActivity extends ListActivity {
             openHash.put("Friday", friO);
             openHash.put("Saturday", satO);
             
+            //creating keys for each day of the week
             String sunC = clObj.getString("Sunday");
             Log.d("Sunday: ", "=> " + sunC);
             String monC = clObj.getString("Monday");
@@ -278,7 +290,7 @@ public class MenuActivity extends ListActivity {
             String satC = clObj.getString("Saturday");
             Log.d("Saturday: ", "=> " + satC);
 
-            // tmp hashmap for single contact
+            // tmp hashmap for closed hours
             HashMap<String, String> closedHash = new HashMap<String, String>();
             
             closedHash.put("Sunday",sunC);

@@ -87,6 +87,7 @@ public class SingleMenuItemActivity extends Activity {
 
 	List<NameValuePair> params = new ArrayList<NameValuePair>();
 
+	//the method called when a the screen is created
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -128,12 +129,15 @@ public class SingleMenuItemActivity extends Activity {
 		View favoriteView = findViewById(R.id.btnFavorite);
 		View unfavoriteView = findViewById(R.id.btnUnfavorite);
 
+		//check if user is logged in
 		if (!login.isLoggedIn()) {
 			submitView.setVisibility(View.GONE);
 			favoriteView.setVisibility(View.GONE);
 			unfavoriteView.setVisibility(View.GONE);
 			ratingBar.setEnabled(false);
-		} else {
+		} 
+		//if user is logged in check if the matching favorite is found
+		else {
 			checkFavorite();
 			if(foundFavorite) {
 				favoriteView.setVisibility(View.GONE);
@@ -146,7 +150,7 @@ public class SingleMenuItemActivity extends Activity {
 		}
 	}
 	
-	
+	//Overload the action button to include the sort button
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    switch (item.getItemId()) {
@@ -164,6 +168,7 @@ public class SingleMenuItemActivity extends Activity {
 	    return super.onOptionsItemSelected(item);
 	}
 
+	//method to check if an item matches an item on the favorites list
 	public void checkFavorite() {
 		Log.d("TESTCALL:", "Call to CheckFavorites");
 		HashMap<String, String> userDetails = login.getUserDetails();
@@ -176,14 +181,12 @@ public class SingleMenuItemActivity extends Activity {
 
 		if (userFavorites != null) {
 			try {
-				// JSONObject jsonObj = new JSONObject(userFavorites);
-
-				// Log.d("Response: ", "=> " + jsonObj);
-
 				// Getting JSON Array node
 
 				JSONArray favorites = new JSONArray(userFavorites);
 				Log.d("FAVLENGTH: ", "=>" + favorites.length());
+				
+				
 				// looping through All Contacts
 				for (int i = 0; i < favorites.length(); i++) {
 					JSONObject c = favorites.getJSONObject(i);
@@ -203,8 +206,6 @@ public class SingleMenuItemActivity extends Activity {
 					if (favItemId.equals(orig_itemId)) {
 						foundFavorite = true;
 						Log.d("FAV FOUND", String.valueOf(foundFavorite));
-//						favoriteView.setVisibility(View.GONE);
-//						unfavoriteView.setVisibility(View.VISIBLE);
 						break;
 					}
 				}
@@ -215,11 +216,6 @@ public class SingleMenuItemActivity extends Activity {
 			Log.e("ServiceHandler",
 					"Couldn't get any data from prefs (checkFavorite)");
 		}
-
-//		if (!foundFavorite) {
-//			favoriteView.setVisibility(View.VISIBLE);
-//			unfavoriteView.setVisibility(View.GONE);
-//		}
 	}
 
 	/**

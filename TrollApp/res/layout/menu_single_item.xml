@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-
+<!--Filename: menu_single_item.xml
+	Description: contains the scroll view and layout for single menu items from SingleMenuActivity.java
+	Author: Kevin Chang & Joel Abitan
+-->
    <ScrollView
        xmlns:android="http://schemas.android.com/apk/res/android"
        	android:id="@+id/scrollView1"
