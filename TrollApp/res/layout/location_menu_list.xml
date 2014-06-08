@@ -51,7 +51,17 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="2dip"
+        android:visibility="gone"
         android:text="Rating: "
+        android:textColor="#141414"
+        android:textStyle="bold" />   
+        
+        <TextView
+        android:id="@+id/lowestPrice"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="2dip"
+        android:text="Lowest Price:"
         android:textColor="#141414"
         android:textStyle="bold" />
 
