@@ -17,7 +17,7 @@
          android:layout_height="wrap_content"
          android:layout_alignParentLeft="true"
          android:layout_alignParentRight="true"
-         android:text="Your Favorites:" />
+         android:text="@string/your_fav" />
      
      <ListView
         android:id="@android:id/list"

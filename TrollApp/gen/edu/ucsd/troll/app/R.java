@@ -16,9 +16,6 @@ public final class R {
         public static final int abc_slide_out_bottom=0x7f040004;
         public static final int abc_slide_out_top=0x7f040005;
     }
-    public static final class array {
-        public static final int coffee_sizes=0x7f0c0000;
-    }
     public static final class attr {
         /**  Custom divider drawable to use for elements in the action bar. 
          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
@@ -1777,14 +1774,15 @@ containing a value of this type.
         public static final int support_simple_spinner_dropdown_item=0x7f030030;
     }
     public static final class menu {
-        public static final int main=0x7f0d0000;
-        public static final int single_menu_actions=0x7f0d0001;
+        public static final int main=0x7f0c0000;
+        public static final int single_menu_actions=0x7f0c0001;
     }
     public static final class string {
         public static final int IO_Exception_getFromLocation=0x7f05004d;
         public static final int Maps=0x7f050069;
         public static final int Menu=0x7f05006a;
         public static final int Profile=0x7f05006b;
+        public static final int a_z=0x7f05007c;
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
          */
         public static final int abc_action_bar_home_description=0x7f050021;
@@ -1825,25 +1823,28 @@ containing a value of this type.
         /**  Description of a share target (both in the list of such or the default share button) in a ShareActionProvider (share UI). [CHAR LIMIT=NONE] 
          */
         public static final int abc_shareactionprovider_share_with_application=0x7f05002b;
-        /**  Menu title 
+        /**  Menu 
          */
-        public static final int action_settings=0x7f050040;
+        public static final int action_settings=0x7f050071;
         public static final int address=0x7f050042;
         /**  User interface labels and strings 
  Address format 
          */
-        public static final int address_output_string=0x7f05003e;
-        public static final int app_description=0x7f05003d;
+        public static final int address_output_string=0x7f05003f;
+        public static final int app_description=0x7f05003e;
         /**  Application identifiers 
          */
-        public static final int app_name=0x7f05003b;
-        public static final int app_tag=0x7f05003c;
+        public static final int app_name=0x7f05003c;
+        public static final int app_tag=0x7f05003d;
         public static final int auth_client_needs_enabling_title=0x7f050001;
         public static final int auth_client_needs_installation_title=0x7f050002;
         public static final int auth_client_needs_update_title=0x7f050003;
         public static final int auth_client_play_services_err_notification_msg=0x7f050004;
         public static final int auth_client_requested_by_msg=0x7f050005;
         public static final int auth_client_using_bad_version_title=0x7f050000;
+        public static final int cat=0x7f050074;
+        public static final int clear_filters=0x7f05007e;
+        public static final int close=0x7f050081;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=40] 
@@ -1950,27 +1951,42 @@ containing a value of this type.
         public static final int connection_error_sign_in_required=0x7f050039;
         public static final int connection_error_unknown=0x7f05003a;
         public static final int connection_failed=0x7f050046;
+        public static final int day=0x7f05007f;
         /**  Messages 
          */
         public static final int desc=0x7f050043;
+        public static final int descript=0x7f050073;
         public static final int diary_body=0x7f050064;
         public static final int diary_confirm=0x7f050065;
         public static final int diary_edit_note=0x7f050066;
         public static final int diary_entry_title=0x7f05006d;
         public static final int diary_menu_delete=0x7f050068;
         public static final int diary_menu_insert=0x7f050067;
-        /**  Diary  
+        /**  Diary 
          */
         public static final int diary_title=0x7f050062;
         public static final int disconnected=0x7f050047;
+        public static final int email=0x7f05008a;
+        public static final int email_hint=0x7f050090;
+        public static final int fav=0x7f050095;
+        public static final int favs=0x7f050091;
+        public static final int filt_by_cat=0x7f050077;
+        public static final int filt_by_rating=0x7f050079;
+        public static final int filt_by_title=0x7f050078;
+        public static final int filter_menu=0x7f050076;
+        public static final int first_name=0x7f050088;
         public static final int get_address=0x7f050048;
         public static final int get_location=0x7f050049;
+        public static final int high_to_low=0x7f05007b;
         public static final int illegal_argument_exception=0x7f05004a;
+        public static final int insert_desc=0x7f050083;
         public static final int invalid_action=0x7f05004b;
         public static final int invalid_integer_id=0x7f05004c;
+        public static final int item=0x7f05006e;
+        public static final int last_name=0x7f050089;
         /**  Latitude, longitude format 
          */
-        public static final int latitude_longitude=0x7f05003f;
+        public static final int latitude_longitude=0x7f050040;
         /**  Labels 
          */
         public static final int latlng=0x7f050041;
@@ -1981,25 +1997,60 @@ containing a value of this type.
         public static final int location_updated=0x7f05004f;
         public static final int location_updates_stopped=0x7f050053;
         public static final int log_new_location=0x7f050054;
+        /**  Singup/Login Layout 
+         */
+        public static final int login=0x7f050086;
+        public static final int login_act_layout=0x7f050087;
         public static final int logout_title=0x7f05006c;
+        public static final int low_price=0x7f050084;
+        public static final int low_to_high=0x7f05007a;
+        /**  Map 
+         */
+        public static final int nearest_loc=0x7f050097;
         public static final int no_address_found=0x7f050055;
         public static final int no_connection=0x7f050056;
         public static final int no_geocoder_available=0x7f050057;
         public static final int no_location_available=0x7f050058;
         public static final int no_notes=0x7f050063;
         public static final int no_resolution=0x7f05005a;
+        public static final int num_shots=0x7f05006f;
+        public static final int open=0x7f050080;
+        public static final int oz_coffee=0x7f050070;
+        public static final int pass=0x7f05008c;
         public static final int periodic_update_stop=0x7f05005b;
+        public static final int pick_a_location=0x7f050082;
         public static final int play_services_available=0x7f05005c;
+        /**  Profile 
+         */
+        public static final int profile=0x7f05008f;
+        public static final int rate_me=0x7f050072;
+        public static final int rating=0x7f050075;
         public static final int request_location_updates_in_progress=0x7f05005d;
         public static final int resolved=0x7f050059;
+        public static final int sign_in=0x7f05008e;
+        public static final int sign_up=0x7f05008d;
         public static final int start_updates=0x7f05005e;
         public static final int stop_updates=0x7f05005f;
+        public static final int submit=0x7f050093;
+        /**  Favorites 
+         */
+        public static final int title=0x7f050094;
+        /**  Generic Use 
+         */
+        public static final int tmp=0x7f05003b;
         public static final int unknown=0x7f050060;
         public static final int unknown_activity_request_code=0x7f050061;
+        public static final int username=0x7f05008b;
+        /**  Password Retrieval 
+         */
+        public static final int username_prompt=0x7f050092;
+        public static final int votes=0x7f050085;
         /**  Text on a placeholder buy button when Google Play services is not
          available or up-to-date 
          */
         public static final int wallet_buy_button_place_holder=0x7f05001f;
+        public static final int your_fav=0x7f050096;
+        public static final int z_a=0x7f05007d;
     }
     public static final class style {
         /** 

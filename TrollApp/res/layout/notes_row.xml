@@ -11,7 +11,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_marginRight="10dp"
-        android:text="Date"
+        android:text="@string/tmp"
         android:textSize="16sp" />
 
     <TextView
@@ -22,7 +22,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="10dp"
         android:layout_toLeftOf="@+id/diary_date"
-        android:text="Entry Title"
+        android:text="@string/tmp"
         android:textSize="20sp"
         android:textStyle="bold" />
 </RelativeLayout>

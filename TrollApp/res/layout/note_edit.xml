@@ -24,7 +24,7 @@
             android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Item" >
+            android:hint="@string/item" >
 
             <requestFocus />
         </EditText>
@@ -95,7 +95,7 @@
         android:layout_below="@+id/linearlayout1"
         android:layout_marginLeft="10dp"
         android:layout_toLeftOf="@+id/oz_coffee"
-        android:text="Oz of coffee:" />
+        android:text="string/oz_coffee" />
 
     <TextView
         android:id="@+id/TextView01"
@@ -105,6 +105,6 @@
         android:layout_below="@+id/oz_coffee"
         android:layout_marginLeft="10dp"
         android:layout_toLeftOf="@+id/num_espresso_shots"
-        android:text="# espresso shots:" />
+        android:text="string/num_shots" />
 
 </RelativeLayout>

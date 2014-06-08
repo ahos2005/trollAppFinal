@@ -60,14 +60,14 @@ public class SingleMenuItemActivity extends Activity {
 	private static final String TAG_SIZE = "size_titles";
 	private static final String TAG_PRICE = "prices";
 	private static final String TAG_ITEMID = "items_id";
-    private static final String TAG_MENUID = "menus_id";
-    private static final String TAG_SORT = "sort_by";
-    private static final String TAG_SORT_ORDER = "order_by";
-    
-    String sortBy = "simple";
-    String orderBy = "desc";
-    String menu_id = null;
-    String finalUrl = null;
+	private static final String TAG_MENUID = "menus_id";
+	private static final String TAG_SORT = "sort_by";
+	private static final String TAG_SORT_ORDER = "order_by";
+
+	String sortBy = "simple";
+	String orderBy = "desc";
+	String menu_id = null;
+	String finalUrl = null;
 
 	private RatingBar ratingBar;
 	private TextView txtRatingValue;
@@ -149,23 +149,23 @@ public class SingleMenuItemActivity extends Activity {
 			}
 		}
 	}
-	
+
 	//Overload the action button to include the sort button
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-	    switch (item.getItemId()) {
-	    // Respond to the action bar's Up/Home button
-	    case android.R.id.home:
-	        Intent upIntent = NavUtils.getParentActivityIntent(this);
-	        Log.d("menuId??????", getIntent().getStringExtra(TAG_MENUID));
-	        upIntent.putExtra(TAG_MENUID, getIntent().getStringExtra(TAG_MENUID));
-	        upIntent.putExtra(TAG_SORT,"simple");
-	        upIntent.putExtra(TAG_SORT_ORDER,"asc");
-	            NavUtils.navigateUpTo(this, upIntent);
-	      
-	        return true;
-	    }
-	    return super.onOptionsItemSelected(item);
+		switch (item.getItemId()) {
+		// Respond to the action bar's Up/Home button
+		case android.R.id.home:
+			Intent upIntent = NavUtils.getParentActivityIntent(this);
+			Log.d("menuId??????", getIntent().getStringExtra(TAG_MENUID));
+			upIntent.putExtra(TAG_MENUID, getIntent().getStringExtra(TAG_MENUID));
+			upIntent.putExtra(TAG_SORT,"simple");
+			upIntent.putExtra(TAG_SORT_ORDER,"asc");
+			NavUtils.navigateUpTo(this, upIntent);
+
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 
 	//method to check if an item matches an item on the favorites list
@@ -185,8 +185,8 @@ public class SingleMenuItemActivity extends Activity {
 
 				JSONArray favorites = new JSONArray(userFavorites);
 				Log.d("FAVLENGTH: ", "=>" + favorites.length());
-				
-				
+
+
 				// looping through All Contacts
 				for (int i = 0; i < favorites.length(); i++) {
 					JSONObject c = favorites.getJSONObject(i);
@@ -335,7 +335,7 @@ public class SingleMenuItemActivity extends Activity {
 				new SetFavorite().execute();
 				// v.setVisibility(View.GONE);
 				// View unfavoriteView = findViewById(R.id.btnUnfavorite);
-				
+
 				// need to run login check to refresh favorite information
 				login.refreshInfo();
 				login = new LoginManager(getApplicationContext());
@@ -363,12 +363,12 @@ public class SingleMenuItemActivity extends Activity {
 				Log.d("The URL will be", favoriteUrl);
 
 				new SetFavorite().execute();
-				
+
 				// need to run login check
 				login.refreshInfo();
 				login = new LoginManager(getApplicationContext());
 				checkFavorite();
-				
+
 				//hide the unfavorite button and bring back favorite button
 				View favoriteView = findViewById(R.id.btnFavorite);
 				View unfavoriteView = findViewById(R.id.btnUnfavorite);			
@@ -445,8 +445,10 @@ public class SingleMenuItemActivity extends Activity {
 		protected void onPostExecute(String result) {
 			super.onPostExecute(result);
 			// Dismiss the progress dialog
-			Toast.makeText(SingleMenuItemActivity.this, String.valueOf(result),
-					Toast.LENGTH_SHORT).show();
+			if(result != null){
+				Toast.makeText(SingleMenuItemActivity.this, String.valueOf(result),
+						Toast.LENGTH_SHORT).show();
+			}
 		}
 
 	}
@@ -517,8 +519,10 @@ public class SingleMenuItemActivity extends Activity {
 		protected void onPostExecute(String result) {
 			super.onPostExecute(result);
 			// Dismiss the progress dialog
-			Toast.makeText(SingleMenuItemActivity.this, String.valueOf(result),
-					Toast.LENGTH_SHORT).show();
+			if(result != null){
+				Toast.makeText(SingleMenuItemActivity.this, String.valueOf(result),
+						Toast.LENGTH_SHORT).show();
+			}
 		}
 
 	}

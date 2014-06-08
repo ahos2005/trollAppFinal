@@ -10,13 +10,13 @@
     	android:fillViewport="true"
    		android:layout_height="match_parent">
    		
- <LinearLayout 
+ <LinearLayout
      android:layout_width="fill_parent"
      android:layout_height="fill_parent"
+     android:background="@drawable/opaquecoffeecup"
+     android:gravity="center_horizontal"
      android:orientation="vertical"
-     android:padding="10dip"
-     android:background="@drawable/opaquecoffeecup">
-     
+     android:padding="10dip" >
  
     <TextView
         android:id="@+id/lblItemID"
@@ -28,14 +28,14 @@
         android:id="@+id/lblTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Rate Me"
+        android:text="@string/rate_me"
         android:textAppearance="?android:attr/textAppearanceMedium" /> 
     
     <TextView
         android:id="@+id/lblDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Description: "
+        android:text="@string/descript"
         android:textAppearance="?android:attr/textAppearanceMedium" />
         
     

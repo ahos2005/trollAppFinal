@@ -1,4 +1,4 @@
-<!--  ?xml version="1.0" encoding="utf-8"?-->
+<!-- ?xml version="1.0" encoding="utf-8"? -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:map="http://schemas.android.com/apk/res-auto"
@@ -7,17 +7,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <fragment  
-          android:id="@+id/map"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:name="com.google.android.gms.maps.MapFragment">
-           <Button
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.MapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <Button
             android:id="@+id/nearest_loc_butt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nearest Location"
-            android:layout_gravity="top|center"/>
-          
-          </fragment>
+            android:layout_gravity="top|center"
+            android:text="@string/nearest_loc" />
+    </fragment>
+
 </LinearLayout>

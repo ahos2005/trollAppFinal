@@ -3,12 +3,14 @@ package edu.ucsd.troll.app;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import android.app.AlertDialog;
-import android.app.ListActivity;
+
 import org.apache.http.NameValuePair;
 import org.json.JSONArray;
+
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
@@ -16,33 +18,6 @@ import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.text.Html;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.app.AlertDialog;
-import android.app.ListActivity;
-import android.app.ProgressDialog;
-import android.os.AsyncTask;
-import android.app.ActionBar;
-import android.support.v4.app.NavUtils;
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-import android.text.Html;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.os.Bundle;
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -99,9 +74,7 @@ public class ProfileActivity extends Activity {
         
 		CharSequence[] forgot_pass = {"Forgot Password?"};
 		if(!login.isLoggedIn()){
-
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			//			LayoutInflater inflater = this.getLayoutInflater();
 			builder.setTitle("Please Sign Up or Sign In")
 						.setItems(forgot_pass, new DialogInterface.OnClickListener() {
 							@Override
@@ -111,16 +84,16 @@ public class ProfileActivity extends Activity {
 								finish();
 							}
 						})
-//			.setSingleChoiceItems(forgot_pass, 0, new DialogInterface.OnClickListener() {
-//				@Override
-//				public void onClick(DialogInterface dialog, int which) {
-//					if(which != -1){
-//						Intent j = new Intent(getApplicationContext(), PasswordRetrievalActivity.class);
-//						startActivity(j);
-//						finish();
-//					}
-//				}
-//			})
+			.setSingleChoiceItems(forgot_pass, 0, new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					if(which != -1){
+						Intent j = new Intent(getApplicationContext(), PasswordRetrievalActivity.class);
+						startActivity(j);
+						finish();
+					}
+				}
+			})
             .setPositiveButton("Sign In", new DialogInterface.OnClickListener() {
             	@Override
             	public void onClick(DialogInterface dialogInterface, int i) {

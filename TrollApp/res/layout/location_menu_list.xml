@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--Filename: location_menu_list.xml
+<!--
+    Filename: location_menu_list.xml
 	Description: contains the list for menu items from SingleMenuActivity.java
 	Author: Kevin Chang & Joel Abitan
 -->
@@ -19,7 +20,7 @@
         android:layout_height="wrap_content"
         android:paddingBottom="2dip"
         android:paddingTop="6dip"
-        android:text="Title: "
+        android:text="@string/title"
         android:textColor="#000000"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -31,7 +32,7 @@
         android:layout_height="wrap_content"
         android:paddingBottom="2dip"
         android:paddingTop="6dip"
-        android:text="Insert Description"
+        android:text="@string/insert_desc"
         android:textColor="#000000"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -43,7 +44,7 @@
         android:layout_height="wrap_content"
         android:paddingBottom="2dip"
         android:paddingTop="6dip"
-        android:text="Title: "
+        android:text="@string/title"
         android:textColor="#000000"
         android:textSize="16sp"
         android:textStyle="bold" />
@@ -55,17 +56,17 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="2dip"
-        android:visibility="gone"
-        android:text="Rating: "
+        android:text="@string/rating"
         android:textColor="#141414"
-        android:textStyle="bold" />   
-        
-        <TextView
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+    <TextView
         android:id="@+id/lowestPrice"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="2dip"
-        android:text="Lowest Price:"
+        android:text="@string/low_price"
         android:textColor="#141414"
         android:textStyle="bold" />
 
@@ -74,7 +75,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="2dip"
-        android:text="Votes: "
+        android:text="@string/votes"
         android:textColor="#acacac"
         android:visibility="gone" />
 
@@ -83,7 +84,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="2dip"
-        android:text="Votes: "
+        android:text="@string/votes"
         android:textColor="#acacac"
         android:visibility="gone" />
 
@@ -92,7 +93,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="2dip"
-        android:text="Votes: "
+        android:text="@string/votes"
         android:textColor="#acacac"
         android:visibility="gone" />
 
@@ -101,7 +102,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="2dip"
-        android:text="Votes: "
+        android:text="@string/votes"
         android:textColor="#acacac"
         android:visibility="gone" />
 
@@ -112,7 +113,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="left"
-        android:text="Category: "
+        android:text="@string/cat"
         android:textColor="#5d5d5d"
         android:textStyle="bold" />
 

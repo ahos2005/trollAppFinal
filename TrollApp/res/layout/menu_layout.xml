@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--Filename: menu_list.xml
+<!--
+    Filename: menu_list.xml
 	Description: Contains the layout for the list of locations from MenuActivity.java
 	Author: Kevin Chang
 -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:background="@drawable/opaquecoffeecup">
+    android:background="@drawable/opaquecoffeecup"
+    android:orientation="vertical" >
 
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
         android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"
-        android:text="Pick A Location"
-        android:textSize="40sp" 
-        android:textStyle="bold"/>
+        android:text="@string/pick_a_location"
+        android:textSize="40sp"
+        android:textStyle="bold" />
 
     <ListView
         android:id="@android:id/list"
         android:layout_width="fill_parent"
-        android:layout_marginTop="80dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp" />
+
 </RelativeLayout>

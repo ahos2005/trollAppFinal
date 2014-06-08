@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--Filename: menu_list.xml
+<!--
+    Filename: menu_list.xml
 	Description: Contains the list of items that populates the list of locations from MenuActivity.java
 	Author: Kevin Chang
 -->
@@ -17,44 +18,47 @@
         android:layout_height="wrap_content"
         android:paddingBottom="2dip"
         android:paddingTop="6dip"
-        android:text="Title: "
+        android:text="@string/title"
         android:textColor="#000000"
         android:textSize="16sp"
         android:textStyle="bold" />
 
     <!-- Email label -->
+
     <TextView
         android:id="@+id/rating"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Rating: "
-        android:visibility="gone"
         android:paddingBottom="2dip"
-        android:textColor="#acacac" />
+        android:text="@string/rating"
+        android:textColor="#acacac"
+        android:visibility="gone" />
 
     <!-- Mobile number label -->
+
     <TextView
         android:id="@+id/category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="left"
-        android:visibility="gone"
-        android:text="Category: "
+        android:text="@string/cat"
         android:textColor="#5d5d5d"
-        android:textStyle="bold" />
-    
-        <!-- Mobile number label -->
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+    <!-- Mobile number label -->
+
     <TextView
         android:id="@+id/menu_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="left"
-        android:visibility="gone"
-        android:text="Category: "
+        android:text="@string/cat"
         android:textColor="#5d5d5d"
-        android:textStyle="bold" />
-    
-   <LinearLayout
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
@@ -62,25 +66,25 @@
             android:id="@+id/sun"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:text="D1ay"
+            android:text="@string/day"
             android:width="100dip" />
 
         <TextView
             android:id="@+id/sunOp"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:text="ope1n"
+            android:text="@string/open"
             android:width="100dip" />
 
         <TextView
             android:id="@+id/sunCl"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:text="close1"
+            android:text="@string/close"
             android:width="100dip" />
-
     </LinearLayout>
-        <LinearLayout
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
@@ -95,18 +99,18 @@
             android:id="@+id/monOp"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:text="open"
+            android:text="@string/open"
             android:width="100dip" />
 
         <TextView
             android:id="@+id/monCl"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:text="close"
+            android:text="@string/close"
             android:width="100dip" />
-
     </LinearLayout>
-        <LinearLayout
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
@@ -114,25 +118,25 @@
             android:id="@+id/tue"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:text="Day"
+            android:text="@string/day"
             android:width="100dip" />
 
         <TextView
             android:id="@+id/tueOp"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:text="open"
+            android:text="@string/open"
             android:width="100dip" />
 
         <TextView
             android:id="@+id/tueCl"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:text="close"
+            android:text="@string/close"
             android:width="100dip" />
-
     </LinearLayout>
-        <LinearLayout
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
@@ -140,25 +144,25 @@
             android:id="@+id/wed"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:text="Day"
+            android:text="@string/day"
             android:width="100dip" />
 
         <TextView
             android:id="@+id/wedOp"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:text="open"
+            android:text="@string/open"
             android:width="100dip" />
 
         <TextView
             android:id="@+id/wedCl"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:text="close"
+            android:text="@string/close"
             android:width="100dip" />
-
     </LinearLayout>
-        <LinearLayout
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
@@ -166,25 +170,25 @@
             android:id="@+id/thur"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:text="Day"
+            android:text="@string/day"
             android:width="100dip" />
 
         <TextView
             android:id="@+id/thurOp"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:text="open"
+            android:text="@string/open"
             android:width="100dip" />
 
         <TextView
             android:id="@+id/thurCl"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:text="close"
+            android:text="@string/close"
             android:width="100dip" />
-
     </LinearLayout>
-        <LinearLayout
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
@@ -192,25 +196,25 @@
             android:id="@+id/fri"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:text="Day"
+            android:text="@string/day"
             android:width="100dip" />
 
         <TextView
             android:id="@+id/friOp"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:text="open"
+            android:text="@string/open"
             android:width="100dip" />
 
         <TextView
             android:id="@+id/friCl"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:text="close"
+            android:text="@string/close"
             android:width="100dip" />
-
     </LinearLayout>
-     <LinearLayout
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
@@ -218,24 +222,22 @@
             android:id="@+id/sat"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:text="Day"
+            android:text="@string/day"
             android:width="100dip" />
 
         <TextView
             android:id="@+id/satOp"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:text="open"
+            android:text="@string/open"
             android:width="100dip" />
 
         <TextView
             android:id="@+id/satCl"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:text="close"
+            android:text="@string/close"
             android:width="100dip" />
-
     </LinearLayout>
-    
 
 </LinearLayout>
