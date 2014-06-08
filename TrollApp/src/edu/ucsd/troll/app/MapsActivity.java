@@ -305,6 +305,8 @@ public class MapsActivity extends FragmentActivity implements
                 Log.d("address: ", "=> " + address);
                 String title = c.getString(TAG_TITLE);
                 Log.d("title: ", "=> " + title);
+                String menu_location_id = c.getString(TAG_MENUID);
+                Log.d("title: ", "=> " + title);
 
 
                 // tmp hashmap for single contact
@@ -324,6 +326,10 @@ public class MapsActivity extends FragmentActivity implements
 
                 locationHash.put(TAG_TITLE, title);
                 Log.d("hash map: ", "=> " + "put title");
+                
+                locationHash.put(TAG_MENUID, menu_location_id);
+                Log.d("hash map: ", "=> " + "put locations Id");
+
 
                 // adding locations to locations list
                 locationList.add(locationHash);
@@ -453,7 +459,7 @@ public class MapsActivity extends FragmentActivity implements
 	              .position(new LatLng(Double.parseDouble(hashMap.get(TAG_LAT)) ,        
 	                  Double.parseDouble(hashMap.get(TAG_LNG))))
 	              .title(hashMap.get(TAG_TITLE))
-	              .snippet(hashMap.get(TAG_ID))
+	              .snippet(hashMap.get(TAG_MENUID))
 	              .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_coffee_icon)));
 	      }
 	    }
