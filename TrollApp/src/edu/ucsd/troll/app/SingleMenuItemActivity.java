@@ -23,6 +23,7 @@ import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.app.TaskStackBuilder;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
@@ -59,6 +60,14 @@ public class SingleMenuItemActivity extends Activity {
 	private static final String TAG_SIZE = "size_titles";
 	private static final String TAG_PRICE = "prices";
 	private static final String TAG_ITEMID = "items_id";
+    private static final String TAG_MENUID = "menus_id";
+    private static final String TAG_SORT = "sort_by";
+    private static final String TAG_SORT_ORDER = "order_by";
+    
+    String sortBy = "simple";
+    String orderBy = "desc";
+    String menu_id = null;
+    String finalUrl = null;
 
 	private RatingBar ratingBar;
 	private TextView txtRatingValue;
@@ -99,7 +108,7 @@ public class SingleMenuItemActivity extends Activity {
 		Log.d("SIZES", sizeTitles);
 
 		TextView sizes = (TextView) findViewById(R.id.lblPrice);
-		// sizes.setText(Html.fromHtml(setUpPricing(sizeTitles, prices)));
+		sizes.setText(Html.fromHtml(setUpPricing(sizeTitles, prices)));
 
 		// Log.d("The list", setUpPricing(sizeTitles, prices));
 
@@ -135,6 +144,24 @@ public class SingleMenuItemActivity extends Activity {
 				unfavoriteView.setVisibility(View.GONE);
 			}
 		}
+	}
+	
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    switch (item.getItemId()) {
+	    // Respond to the action bar's Up/Home button
+	    case android.R.id.home:
+	        Intent upIntent = NavUtils.getParentActivityIntent(this);
+	        Log.d("menuId??????", getIntent().getStringExtra(TAG_MENUID));
+	        upIntent.putExtra(TAG_MENUID, getIntent().getStringExtra(TAG_MENUID));
+	        upIntent.putExtra(TAG_SORT,"simple");
+	        upIntent.putExtra(TAG_SORT_ORDER,"asc");
+	            NavUtils.navigateUpTo(this, upIntent);
+	      
+	        return true;
+	    }
+	    return super.onOptionsItemSelected(item);
 	}
 
 	public void checkFavorite() {
