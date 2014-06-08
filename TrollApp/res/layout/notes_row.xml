@@ -18,9 +18,11 @@
         android:id="@+id/text1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toLeftOf="@+id/diary_date"
+        android:text="Entry Title"
         android:textSize="20sp"
         android:textStyle="bold" />
 </RelativeLayout>

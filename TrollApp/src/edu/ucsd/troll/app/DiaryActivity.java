@@ -57,7 +57,6 @@ public class DiaryActivity extends ListActivity {
 		
 		diaryInsert.setOnClickListener(new View.OnClickListener() {
 			@Override
-
 			public void onClick(View view) {
 				if(mDbHelper != null){
 					createNote();
@@ -123,7 +122,6 @@ public class DiaryActivity extends ListActivity {
 		menu.add(0, INSERT_ID, 0, R.string.diary_menu_insert);
 		return true;
 	}
-	
 	
 
 	@Override

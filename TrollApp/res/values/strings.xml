@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <resources>
     <!-- Application identifiers -->
     <string name="app_name">Troll</string>
@@ -73,10 +72,19 @@
     <string name="diary_edit_note">Edit</string>
     <string name="diary_menu_insert">Insert</string>
     <string name="diary_menu_delete">Delete</string>
+    <string name="Maps">Locations</string>
+    <string name="Menu">Menus</string>
+    <string name="Profile">Profile</string>
+    <string name="logout_title">Logout</string>
+    <string name="diary_entry_title">Title</string>
 
-     <string name="Maps">Locations</string>
-     <string name="Menu">Menus</string>
-     <string name="Profile">Profile</string>
-     <string name="logout_title">Logout</string>
-     <string name="diary_entry_title">Title</string>
+    <string-array name="coffee_sizes">
+        <item>Non-coffee item</item>
+        <item>Extra Small (8 Oz)</item>
+        <item>Small (12 Oz)</item>
+        <item>Medium (16 Oz)</item>
+        <item>Large (20 Oz)</item>
+        <item>Extra Large (24+ Oz)</item>
+    </string-array>
+
 </resources>

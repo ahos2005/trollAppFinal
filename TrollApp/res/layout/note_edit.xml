@@ -2,11 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" 
-    android:background="@drawable/opaquecoffeecup">
+    android:background="@drawable/opaquecoffeecup"
+    android:orientation="vertical" >
 
     <LinearLayout
-        android:id="@+id/linearLayout1"
+        android:id="@+id/linearlayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
@@ -14,13 +14,20 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:text="@string/diary_entry_title" />
 
         <EditText
             android:id="@+id/diary_title"
-            android:layout_width="wrap_content"
+            android:layout_width="0dip"
             android:layout_height="52dp"
-            android:layout_weight="1" />
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Item" >
+
+            <requestFocus />
+        </EditText>
     </LinearLayout>
 
     <EditText
@@ -33,32 +40,71 @@
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
         android:background="@drawable/round_btn"
-        android:textAlignment="viewStart" >
- <!-- 2 -->
         android:ems="10"
-        android:scrollbars="vertical" >
-        <requestFocus />
+        android:hint=""
+        android:scrollbars="vertical"
+        android:textAlignment="viewStart" >
     </EditText>
 
-    <TextView
-        android:id="@+id/textView1"
+    <EditText
+        android:id="@+id/num_espresso_shots"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayout1"
-        android:layout_centerHorizontal="true"
-        android:text="@string/diary_body"
-        android:textSize="20sp" />
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/oz_coffee"
+        android:layout_marginRight="10dp"
+        android:ems="10"
+        android:inputType="number"
+        android:text="0" />
 
     <Button
         android:id="@+id/diary_confirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp"
         android:layout_centerHorizontal="true"
         android:text="@string/diary_confirm"
         android:textColor="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/oz_coffee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/linearlayout1"
+        android:layout_marginRight="10dp"
+        android:ems="10"
+        android:inputType="number"
+        android:text="8" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/num_espresso_shots"
+        android:layout_centerHorizontal="true"
+        android:text="@string/diary_body"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/TextView02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/linearlayout1"
+        android:layout_marginLeft="10dp"
+        android:layout_toLeftOf="@+id/oz_coffee"
+        android:text="Oz of coffee:" />
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/oz_coffee"
+        android:layout_marginLeft="10dp"
+        android:layout_toLeftOf="@+id/num_espresso_shots"
+        android:text="# espresso shots:" />
 
 </RelativeLayout>
