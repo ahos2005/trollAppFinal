@@ -1,26 +1,16 @@
 package edu.ucsd.troll.app;
 
-import android.app.ListActivity;
+
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListAdapter;
-import android.widget.SimpleAdapter;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -36,22 +26,6 @@ import org.apache.http.message.BasicNameValuePair;
 
 
 
-
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.List;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.utils.URLEncodedUtils;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
-
 /**
  * Created by shalomabitan on 5/22/14.
  */
@@ -60,10 +34,8 @@ public class ChangePasswordActivity extends Activity {
     //init the progress bar
     private ProgressDialog pDialog;
 
-    private static String loginUrl = "http://troll.everythingcoed.com/user/login";
     private static String resetPasswordUrl = "http://troll.everythingcoed.com/user/reset";
-    private static String checkLoginUrl = "http://troll.everythingcoed.com/user/login/check";
-
+    
     private static final String TAG_APIKEYVALUE = "OlDwjUX0fQSm0vAy2D3fy4uCZ108bx5N";
     private static final String TAG_APIKEYNAME= "api_key";
     private static final String TAG_RESPONSE = "response";
@@ -79,15 +51,9 @@ public class ChangePasswordActivity extends Activity {
     private static final String TAG_FAVORITES = "favorites";
     private static final String TAG_USERTOKEN = "presist_code";
 
-    // menu JSONArray
-    JSONArray menu = null;
-
-    //api response string
-    String responseString = null;
 
     //login manager
     LoginManager login;
-
 
     // Hashmap for ListView
     ArrayList<HashMap<String, String>> userList;
@@ -97,8 +63,6 @@ public class ChangePasswordActivity extends Activity {
     // Alert Dialog Manager
     AlertDialogManager alert = new AlertDialogManager();
 
-    // Session Manager Class
-    SessionManager session;
     //login button
     Button submitPasswordChangeBtn;
 
@@ -111,8 +75,6 @@ public class ChangePasswordActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.change_password);
       
-        userList = new ArrayList<HashMap<String, String>>();
-
         // Session Manager
         login = new LoginManager(getApplicationContext());
 
@@ -120,12 +82,9 @@ public class ChangePasswordActivity extends Activity {
         usernameTextBox = (EditText) findViewById(R.id.passChangeUsername);
         passwordTextBox = (EditText) findViewById(R.id.newPassword);
         confirmPasswordTextBox = (EditText) findViewById(R.id.confirmNewPassword);
-        
-        //Toast.makeText(getApplicationContext(), "User Login Status: " + session.isLoggedIn(), Toast.LENGTH_LONG).show();
-        
+         
         // submit password change button
         submitPasswordChangeBtn = (Button) findViewById(R.id.submitPasswordChange);
-
 
         // submit password change button click event
         submitPasswordChangeBtn.setOnClickListener(new View.OnClickListener() {
@@ -133,12 +92,12 @@ public class ChangePasswordActivity extends Activity {
             @Override
             public void onClick(View arg0) {
             	Intent passRetrieveIntent = getIntent();
-                // Get username, password from EditText
+                // Get username, password, and confirm password from EditText
                 String username = usernameTextBox.getText().toString();
                 String newPassword = passwordTextBox.getText().toString();
                 String confirmPassword = confirmPasswordTextBox.getText().toString();
                 String resetCode = passRetrieveIntent.getStringExtra(TAG_RESETCODE);
-System.out.println("This is the reset code" + resetCode);
+                
                 //Check that the password and password confirmation match
                 if(!confirmPassword.trim().equals(newPassword.trim())){
                 	alert.showAlertDialog(ChangePasswordActivity.this, "Password and Password "
@@ -201,10 +160,10 @@ System.out.println("This is the reset code" + resetCode);
                   JSONObject jsonObj = new JSONObject(jsonStr);
 
                     Log.d("Response: ", "=> " + jsonObj);
+                    
                     //the overall return object
                     String responseReturn = jsonObj.getString(TAG_RESPONSE);
                     Log.d("Response: ", "=> " + responseReturn);
-
 
                     //get the result JSON response result
                     JSONObject resultObj = new JSONObject(responseReturn);
@@ -307,16 +266,7 @@ System.out.println("This is the reset code" + resetCode);
                 alert.showAlertDialog(ChangePasswordActivity.this, "Login failed..", 
                 		"Internal Error", false);
             }
-            /**
-             * Updating parsed JSON data into ListView
-             * */
-//            ListAdapter adapter = new SimpleAdapter(
-//                    ProfileActivity.this, menuList,
-//                    R.layout.list_item, new String[] {TAG_TITLE, TAG_DESCRIPTION,
-//                    TAG_SIZE}, new int[] { R.id.title,
-//                    R.id.rating, R.id.category });
-//
-//            setListAdapter(adapter);
+ 
         }
 
     }
