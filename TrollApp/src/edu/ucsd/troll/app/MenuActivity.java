@@ -6,6 +6,7 @@ package edu.ucsd.troll.app;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -49,16 +50,22 @@ public class MenuActivity extends ListActivity {
     private static final String TAG_ADDRESS = "address";
     private static final String TAG_LASTNAME = "last_name";
     private static final String TAG_FAVORITES = "favorites";
+    private static final String TAG_HOURS = "hours";
+    private static final String TAG_OPEN = "open";
+    private static final String TAG_CLOSED = "closed";
     private static final String TAG_USERTOKEN = "presist_code";
     private static final String TAG_MENUID = "menus_id";
 
     private static final String TAG_SORT = "sort_by";
     private static final String TAG_SORT_ORDER = "order_by";
+    String[] daysOfWeek = new String[]{"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
     
     LocationAPIManager locationsStorage;
     JSONArray locations = null;
     // Hashmap for ListView
     ArrayList<HashMap<String, String>> locationList;
+    ArrayList<HashMap<String, String>> hoursList;
+    List<HashMap<String, String>> fillHours;
     
     ArrayList<HashMap<String, String>> menuList;
 
@@ -78,7 +85,10 @@ public class MenuActivity extends ListActivity {
        locationAPIResult = locationsStorage.getLocations();
         
        locationList = new ArrayList<HashMap<String, String>>();
-        
+       locationList = new ArrayList<HashMap<String, String>>();
+       hoursList = new ArrayList<HashMap<String, String>>();
+       fillHours = new ArrayList<HashMap<String, String>>();
+       
        setUpLocations(locationAPIResult);
         
         
@@ -96,8 +106,7 @@ public class MenuActivity extends ListActivity {
                 String rating = ((TextView) view.findViewById(R.id.rating))
                         .getText().toString();
                 String category = ((TextView) view.findViewById(R.id.category))
-                        .getText().toString();
-                
+                        .getText().toString();     
                 String menuID = ((TextView) view.findViewById(R.id.menu_id))
                         .getText().toString();
 
@@ -115,14 +124,26 @@ public class MenuActivity extends ListActivity {
             }
         });
         
-        
         ListAdapter adapter = new SimpleAdapter(
-                MenuActivity.this, locationList,
-                R.layout.menu_list, new String[] { TAG_TITLE, TAG_ADDRESS,
-                TAG_LAT, TAG_MENUID }, new int[] { R.id.title,
-                R.id.category, R.id.rating, R.id.menu_id });
+                MenuActivity.this, fillHours,
+                R.layout.menu_list, new String[] { TAG_TITLE, TAG_MENUID,
+                "Day0","Open0","Closed0",
+                "Day1","Open1","Closed1",
+                "Day2","Open2","Closed2",
+                "Day3","Open3","Closed3",
+                "Day4","Open4","Closed4",
+                "Day5","Open5","Closed5",
+                "Day6","Open6","Closed6"},
+                new int[] { R.id.title, R.id.menu_id,
+                R.id.sun,R.id.sunOp,R.id.sunCl,
+                R.id.mon,R.id.monOp,R.id.monCl,
+                R.id.tue,R.id.tueOp,R.id.tueCl,
+                R.id.wed,R.id.wedOp,R.id.wedCl,
+                R.id.thur,R.id.thurOp,R.id.thurCl,
+                R.id.fri,R.id.friOp,R.id.friCl,
+                R.id.sat,R.id.satOp,R.id.satCl});
 
-        	setListAdapter(adapter);
+        setListAdapter(adapter);
     }
 		
     private void setUpLocations(String locationsArray) {
@@ -153,18 +174,24 @@ public class MenuActivity extends ListActivity {
                 String address = c.getString(TAG_ADDRESS);
                 Log.d("address: ", "=> " + address);
                 String title = c.getString(TAG_TITLE);
-                Log.d("title: ", "=> " + title);
-                
+                Log.d("title: ", "=> " + title);  
                 String menuID = c.getString(TAG_MENUID);
                 Log.d("menu id: ", "=> " + menuID);
+                String hrs = c.getString(TAG_HOURS);
+                Log.d("Hours: ", "=> " + hrs);
+                
+                setUpHours(hrs);
 
-//                // Phone node is JSON Object
-//                JSONObject phone = c.getJSONObject(TAG_PHONE);
-//                String mobile = phone.getString(TAG_PHONE_MOBILE);
-//                String home = phone.getString(TAG_PHONE_HOME);
-//                String office = phone.getString(TAG_PHONE_OFFICE);
-
-                // tmp hashmap for single contact
+                HashMap<String, String> hours = new HashMap<String, String>();
+            	hours.put(TAG_TITLE, title);
+            	hours.put(TAG_MENUID, menuID);
+            	for(int k=0; k<7; k++) {
+                    hours.put("Day"+ k, daysOfWeek[k]);
+                    hours.put("Open"+ k, hoursList.get(0).get(daysOfWeek[k]));
+                    hours.put("Closed"+ k, hoursList.get(1).get(daysOfWeek[k]));
+            	}
+            	fillHours.add(hours);     
+            	
                 HashMap<String, String> locationHash = new HashMap<String, String>();
                 
                 Log.d("hash map: ", "=> " + "become active");
@@ -196,5 +223,84 @@ public class MenuActivity extends ListActivity {
         }
     	
     }
+    
+	private void setUpHours(String hours) {
+    	
+    	Log.d("Hours", hours);
+    	
+    	try {
+            JSONObject preObj = new JSONObject(hours);
+            JSONObject jsonObj = preObj.getJSONObject("hours");
+            Log.d("JSONOBJ", jsonObj.toString());
+            JSONObject opObj = jsonObj.getJSONObject("open");
+            Log.d("result", opObj.toString());
+            JSONObject clObj = jsonObj.getJSONObject("close");
+            Log.d("result", clObj.toString());
+            
+            String sunO = opObj.getString("Sunday");
+            Log.d("Sunday: ", "=> " + sunO);
+            String monO = opObj.getString("Monday");
+            Log.d("Monday: ", "=> " + monO);
+            String tueO = opObj.getString("Tuesday");
+            Log.d("Tuesday: ", "=> " + tueO);
+            String wedO = opObj.getString("Wednesday");
+            Log.d("Wednesday: ", "=> " + wedO);
+            String thurO = opObj.getString("Thursday");
+            Log.d("Thursday: ", "=> " + thurO);
+            String friO = opObj.getString("Friday");
+            Log.d("Friday: ", "=> " + friO);
+            String satO = opObj.getString("Saturday");
+            Log.d("Saturday: ", "=> " + satO);
+
+            // tmp hashmap for single contact
+            HashMap<String, String> openHash = new HashMap<String, String>();
+            
+            openHash.put("Sunday", sunO);
+            openHash.put("Monday", monO);
+            openHash.put("Tuesday", tueO);
+            openHash.put("Wednesday", wedO);
+            openHash.put("Thursday", thurO);
+            openHash.put("Friday", friO);
+            openHash.put("Saturday", satO);
+            
+            String sunC = clObj.getString("Sunday");
+            Log.d("Sunday: ", "=> " + sunC);
+            String monC = clObj.getString("Monday");
+            Log.d("Monday: ", "=> " + monC);
+            String tueC = clObj.getString("Tuesday");
+            Log.d("Tuesday: ", "=> " + tueC);
+            String wedC = clObj.getString("Wednesday");
+            Log.d("Wednesday: ", "=> " + wedC);
+            String thurC = clObj.getString("Thursday");
+            Log.d("Thursday: ", "=> " + thurC);
+            String friC = clObj.getString("Friday");
+            Log.d("Friday: ", "=> " + friC);
+            String satC = clObj.getString("Saturday");
+            Log.d("Saturday: ", "=> " + satC);
+
+            // tmp hashmap for single contact
+            HashMap<String, String> closedHash = new HashMap<String, String>();
+            
+            closedHash.put("Sunday",sunC);
+            closedHash.put("Monday",monC);
+            closedHash.put("Tuesday",tueC);
+            closedHash.put("Wednesday",wedC);
+            closedHash.put("Thursday",thurC);
+            closedHash.put("Friday",friC);
+            closedHash.put("Saturday",satC);
+            
+            Log.d("hash map: ", "=> " + "become active");
+
+
+            // adding locations to locations list
+            hoursList.add(openHash);
+            hoursList.add(closedHash);
+                
+                Log.d("list: ", "=> " + "added");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    	
+   }
    	
 }
