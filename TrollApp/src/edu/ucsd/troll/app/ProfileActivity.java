@@ -74,9 +74,11 @@ public class ProfileActivity extends Activity {
         
 		CharSequence[] forgot_pass = {"Forgot Password?"};
 		if(!login.isLoggedIn()){
+			//Displays user dialog if user is logged out
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 			builder.setTitle("Please Sign Up or Sign In")
 						.setItems(forgot_pass, new DialogInterface.OnClickListener() {
+							//Creates forget password activity inside alert dialog
 							@Override
 							public void onClick(DialogInterface dialogInterface, int i) {
 								Intent j = new Intent(getApplicationContext(), PasswordRetrievalActivity.class);
@@ -94,6 +96,7 @@ public class ProfileActivity extends Activity {
 					}
 				}
 			})
+	    //Sign in button
             .setPositiveButton("Sign In", new DialogInterface.OnClickListener() {
             	@Override
             	public void onClick(DialogInterface dialogInterface, int i) {
@@ -102,6 +105,7 @@ public class ProfileActivity extends Activity {
     	    		finish();
             	}
             })
+            //Sign up button
             .setNeutralButton("Sign Up", new DialogInterface.OnClickListener() {
             	@Override
                 public void onClick(DialogInterface dialogInterface, int i) {
@@ -112,6 +116,7 @@ public class ProfileActivity extends Activity {
 
                 }
             })
+            //Button to close the alert dialog
             .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
@@ -124,13 +129,13 @@ public class ProfileActivity extends Activity {
             AlertDialog loginDialog = builder.create();
             loginDialog.show();
 
-
+        //If the user is logged in, display profile page
         }else{
             setContentView(R.layout.profile_layout);
             //this is just for testing and debugging
             //login.logoutUser();
          
-            
+            //Instantiating the buttons for the profile page
             final Button logoutButton = (Button) findViewById(R.id.logoutBtn);
             final Button diaryButton = (Button) findViewById(R.id.diaryBtn);
             final Button favorites = (Button) findViewById(R.id.favBtn);
@@ -147,18 +152,22 @@ public class ProfileActivity extends Activity {
             diaryButton.setBackgroundDrawable(round_btn);
             favorites.setBackgroundDrawable(round_btn);
             
+            //Button activity to log the user out
             logoutButton.setOnClickListener(new View.OnClickListener() {
                 @Override
 
             public void onClick(View view) {
-                	login.logoutUser();
+            	    //Log the user out
+                    login.logoutUser();
                     Intent act2 = new Intent(view.getContext(), MainActivity.class);
                     Toast.makeText(ProfileActivity.this, "You Have Been Logged out", Toast.LENGTH_LONG).show();
+                    //Move back to mainactivity.java
                     startActivity(act2);
                     finish();
                 }
             });
 
+	    //Button activity for diary
             diaryButton.setOnClickListener(new View.OnClickListener() {
 				
 				@Override
@@ -170,7 +179,7 @@ public class ProfileActivity extends Activity {
 				}
 			});
             
-            
+            //Button activity for favorites list
             favorites.setOnClickListener(new View.OnClickListener() {
             	                 @Override
             	                 
@@ -181,6 +190,7 @@ public class ProfileActivity extends Activity {
             	                 }
             	             });
 
+            //Gets the user's personal information
             TextView usernameTextView = (TextView) findViewById(R.id.user_username);
 
             TextView emailTextView = (TextView) findViewById(R.id.user_email);
