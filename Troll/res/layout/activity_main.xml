@@ -34,6 +34,7 @@
         android:layout_marginTop="5dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:textSize="25sp"        
         android:textColor="#FFFFFF"
         android:text="@string/Profile"
         />
@@ -45,6 +46,7 @@
         android:layout_marginTop="5dp"
         android:layout_above="@+id/profileBtn"
         android:layout_centerHorizontal="true"
+        android:textSize="25sp"        
         android:textColor="#FFFFFF"
         android:text="@string/Menu"
         />
@@ -58,6 +60,7 @@
         android:layout_above="@+id/menuBtn"
         android:layout_alignRight="@+id/profileBtn"
         android:fitsSystemWindows="true"
+        android:textSize="25sp"        
         android:textColor="#FFFFFF"
         android:text="@string/Maps"
          />
